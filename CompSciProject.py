@@ -3,7 +3,6 @@
 stress = 5
 timeLeft = 3
 
-
 def showStats():
     print("\nStats:")
     print("stress =", stress)
@@ -25,38 +24,36 @@ def checkScore():
         endGame(True)
         return
 
-def ScenarioMain():
+def Start():
     print("You have a big Comp Sci test today and you want to get out of school.")
     #this is the main scenario, where you choose your path
     showStats()
-
     print("The bell is about to ring.")
     print("1: Go to the nurse and fake sick")
     print("2: Try to leave at lunch")
     print("3: Talk to the teacher")
     choice = int(input("Choose 1, 2, or 3: "))
-
     if choice == 1:
-        Scenario1()
+        Nurse()
     elif choice == 2:
-        Scenario2()
+        Lunch()
     elif choice == 3:
-        Scenario3()
+        Teacher()
     else:
         print("Invalid choice. Try again.")
-        ScenarioMain()
+        Start()
 
 
 # Different Scenarios
 
-def Scenario1():
+def Nurse():
     # path 1
     global stress
     global timeLeft
     timeLeft = timeLeft - 2
     stress = stress + 2
     showStats()
-    print("Scenario 1: You're in the nurse office.")
+    print("You're in the nurse office.")
     print("The nurse looks suspicious.")
     print("1: Commit to the lie")
     print("2: Admit you're anxious")
@@ -75,77 +72,55 @@ def Scenario1():
         checkScore()
     else:
         print("Invalid choice. Try again.")
-        Scenario1()
+        Nurse()
 
 
-def Scenario2():
+def Lunch():
     # path 3
     global timeLeft
+    global stress
     timeLeft = timeLeft - 2
     showStats()
 
-    print("Scenario 3: It's lunch. The exits are crowded.")
-    print("1: Sneak out quickly")
+    print("It's lunch. Coach I is by the parking lot")
+    print("1: Walk out confidenly")
     print("2: Wait for a distraction")
     choice = int(input("Choose 1 or 2: "))
-
     if choice == 1:
-        Scenario7()
+        print("you make it out")
+        stress=stress+2
+        timeLeft=timeLeft +2
+        checkScore()
     elif choice == 2:
+        print("You run out of time")
         timeLeft = timeLeft - 1
         checkScore ()
     else:
         print("Invalid choice. Try again.")
-        Scenario3()
+        Teacher()
 
-def Scenario3():
+def Teacher():
     global timeLeft
     global stress
     stress = stress + 2
     timeLeft = timeLeft - 1
     showStats()
-
-    print("Scenario 4: You talk to the teacher before class.")
+    print("You talk to the teacher before class.")
     print("1: Be honest")
     print("2: Make up an excuse")
     choice = int(input("Choose 1 or 2: "))
-
     if choice == 1:
         stress = stress - 1
         print("\nThe teacher understands and lets you take the test another day.")
         checkScore()
     elif choice == 2:
         stress = stress + 3
-        print("\nThe teacher does not believe you. You sit down... test time.")
+        print("\nThe teacher does not believe you. Test time")
         checkScore()
     else:
         print("Invalid choice. Try again.")
-        Scenario3()
+        Teacher()
 
-
-def Scenario7():
-    # path 
-    global stress
-    global timeLeft
-    stress = stress + 2
-    showStats()
-    print("Scenario 7: Security is near the exit.")
-    print("1: Walk past confidently")
-    print("2: Turn around and try another way")
-    choice = int(input("Choose 1 or 2: "))
-    if choice == 1:
-        # security catches you
-        stress = stress + 2
-        timeLeft = timeLeft + 3
-        checkScore()
-    elif choice == 2:
-        # you sneak another way
-        stress = stress + 1
-        timeLeft = timeLeft - 1
-        checkScore()
-    else:
-        print("Invalid choice. Try again.")
-        Scenario7()
 
 #this is the thing that prints if you won or lost
 def endGame(result):
@@ -159,4 +134,4 @@ def endGame(result):
         print("Final stress =", stress)
         print("Final timeLeft =", timeLeft)
 
-ScenarioMain()
+Start()
