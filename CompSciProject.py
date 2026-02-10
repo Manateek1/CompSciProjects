@@ -25,13 +25,13 @@ def checkScore():
         return
 
 def Start():
-    print("You have a big Comp Sci test today and you want to get out of school.")
+    print("You have a Comp Sci test today and you wanna skip it.")
     #this is the main scenario, where you choose your path
     showStats()
     print("The bell is about to ring.")
     print("1: Go to the nurse and fake sick")
     print("2: Try to leave at lunch")
-    print("3: Talk to the teacher")
+    print("3: Talk to Ms. Tamony")
     choice = int(input("Choose 1, 2, or 3: "))
     if choice == 1:
         Nurse()
@@ -105,32 +105,31 @@ def Teacher():
     stress = stress + 2
     timeLeft = timeLeft - 1
     showStats()
-    print("You talk to the teacher before class.")
+    print("You talk to Ms. Tamony before class.")
     print("1: Be honest")
     print("2: Make up an excuse")
     choice = int(input("Choose 1 or 2: "))
     if choice == 1:
         stress = stress - 1
-        print("\nThe teacher understands and lets you take the test another day.")
+        print("\nShe understands and lets you take the test another day.")
         checkScore()
     elif choice == 2:
         stress = stress + 3
-        print("\nThe teacher does not believe you. Test time")
+        print("\nShe doesn't believe you. Test time")
         checkScore()
     else:
         print("Invalid choice. Try again.")
         Teacher()
 
-
 #this is the thing that prints if you won or lost
 def endGame(result):
-    print("\n--- GAME OVER ---")
+    print("\nGAME OVER")
     if result == True:
         print("You escaped the test (or delayed it lol)")
         print("Final stress =", stress)
         print("Final timeLeft =", timeLeft)
     else:
-        print("You did not escape the test.")
+        print("You didn't escape the test.")
         print("Final stress =", stress)
         print("Final timeLeft =", timeLeft)
 
