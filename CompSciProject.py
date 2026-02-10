@@ -1,13 +1,14 @@
-# Escape the test game 
-
+# Escape the test game by Dillon and Brock
 stress = 5
 timeLeft = 3
 
+#show stress and time left
 def showStats():
     print("\nStats:")
     print("stress =", stress)
     print("time left =", timeLeft)
 
+#check win/lose
 def checkScore():
     if timeLeft <= 0:
         #run out of time
@@ -24,6 +25,7 @@ def checkScore():
         endGame(True)
         return
 
+#starts the game and fisrt choice
 def Start():
     print("You have a Comp Sci test today and you wanna skip it.")
     #this is the main scenario, where you choose your path
@@ -45,7 +47,7 @@ def Start():
 
 
 # Different Scenarios
-
+#nurse scenario
 def Nurse():
     # path 1
     global stress
@@ -74,14 +76,13 @@ def Nurse():
         print("Invalid choice. Try again.")
         Nurse()
 
-
+#lunch scenario
 def Lunch():
     # path 3
     global timeLeft
     global stress
     timeLeft = timeLeft - 2
     showStats()
-
     print("It's lunch. Coach I is by the parking lot")
     print("1: Walk out confidenly")
     print("2: Wait for a distraction")
@@ -97,8 +98,8 @@ def Lunch():
         checkScore ()
     else:
         print("Invalid choice. Try again.")
-        Teacher()
-
+        Lunch()
+#teacher scenario
 def Teacher():
     global timeLeft
     global stress
@@ -132,5 +133,5 @@ def endGame(result):
         print("You didn't escape the test.")
         print("Final stress =", stress)
         print("Final timeLeft =", timeLeft)
-
+#starts the actual game
 Start()
