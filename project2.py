@@ -43,16 +43,26 @@ def story():
 
 #prompts to go again
 def replay(answer):
-    if answer.lower() == "yes":
-        verbs.clear()
-        adjs.clear()
-        nouns.clear()
-        run()
-    else:
+    if answer.lower() == "no":
         print("")
         print("")
         print("")
         print("funny huh, bye")
+    elif answer.lower() == "yes":
+        verbs.clear()
+        adjs.clear()
+        nouns.clear()
+        print(" ")
+        print(" ")
+        print(" ")
+        run()
+    else:
+        play = input("one more round? yes or no? ")
+        replay(play)
+
+        
+        
+    
         
 
 
@@ -64,7 +74,7 @@ def run():
     theinputs()
     phrases()
     story()
-    play = input("one more round? yes or no?")
+    play = input("one more round? yes or no? ")
     replay(play) #runs the players answer
 
 run()
