@@ -1,0 +1,24 @@
+questions = [
+    ["6 * 7", "42"],
+    ["12 + 8", "20"],
+    ["81 / 9", "9"]
+]
+
+
+def run_quiz(question_list):
+    score = 0
+
+    for question in question_list:
+        answer = input(question[0] + " = ")
+
+        if answer == question[1]:
+            print("correct")
+            score = score + 1
+        else:
+            print("wrong, the answer is", question[1])
+
+    return score
+
+print("Math Quiz")
+final_score = run_quiz(questions)
+print("Score:", final_score, "out of", len(questions))
