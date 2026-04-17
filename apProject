@@ -4,7 +4,6 @@ questions = [
     ["81 / 9", "9"]
 ]
 
-
 def run_quiz(question_list):
     score = 0
 
