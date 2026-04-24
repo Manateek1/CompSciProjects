@@ -1,15 +1,17 @@
+# This program quizzes the user on math questions and keeps track of their score
+# List of questions and their correct answers
 questions = [
     ["6 * 7", "42"],
     ["12 + 8", "20"],
     ["81 / 9", "9"]
 ]
-
+# Function that runs the quiz and returns the score
 def run_quiz(question_list):
-    score = 0
-
+    score = 0 # keeps track of correct answers
+    # iteration
     for question in question_list:
         answer = input(question[0] + " = ")
-
+        # selection
         if answer == question[1]:
             print("correct")
             score = score + 1
@@ -19,5 +21,7 @@ def run_quiz(question_list):
     return score
 
 print("Math Quiz")
+# calling the function
 final_score = run_quiz(questions)
+#prints final score
 print("Score:", final_score, "out of", len(questions))
